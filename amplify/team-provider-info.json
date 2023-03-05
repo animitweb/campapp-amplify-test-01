@@ -17,6 +17,9 @@
       },
       "api": {
         "campappamplifytest01": {}
+      },
+      "storage": {
+        "imagestorage": {}
       }
     }
   }
