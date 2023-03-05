@@ -43,6 +43,7 @@ const App = ({ signOut }) => {
   async function createNote(event) {
     event.preventDefault();
     const form = new FormData(event.target);
+    const image = form.get("image");
     const data = {
       name: form.get("name"),
       description: form.get("description"),
@@ -57,7 +58,7 @@ const App = ({ signOut }) => {
     event.target.reset();
   }
 
-  async function deleteNote({ id }) {
+  async function deleteNote({ id, name }) {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
     await Storage.remove(name);
@@ -115,7 +116,7 @@ const App = ({ signOut }) => {
             {note.image && (
               <Image
                 src={note.image}
-                alt={'visual aid for ${notes.name}'}
+                alt={`visual aid for ${notes.name}`}
                 style={{ width: 400 }}
               />
             )}
